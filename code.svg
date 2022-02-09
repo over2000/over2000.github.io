@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1080 760" style="enable-background:new 0 0 1080 760;" xml:space="preserve">
+
+<style>
+	#barra{
+		animation: barra 2s ease-in-out infinite alternate;
+	}
+
+	@keyframes barra {
+		from {
+			transform: translate(0, 0);
+		}
+		to {
+			transform: translate(100px, 0px);
+		}
+	}
+</style>
+
+	<g id="barra">
+		<path d="M534.8,518.8l-43.9,0.2c-5.4-1.2-8.8-6.5-7.6-11.9l51.1-229.4c1.2-5.4,6.7-7.7,11.9-7.6l43.9-0.2c5.4,1.2,8.8,6.5,7.6,11.9
+			l-51.1,229.4C545.5,516.6,541,519,534.8,518.8z"/>
+	</g>
+
+	<g id="circulo">
+		<circle cx="443" cy="488" r="31"/>
+	</g>
+
+</svg>
