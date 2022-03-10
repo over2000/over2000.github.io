@@ -5,7 +5,7 @@
 
 <style>
 	#barra{
-		animation: barra 2s ease-in-out infinite alternate;
+		animation: barra 3s ease-in-out infinite alternate;
 	}
 
 	@keyframes barra {
@@ -18,13 +18,11 @@
 	}
 </style>
 
+
 	<g id="barra">
 		<path d="M534.8,518.8l-43.9,0.2c-5.4-1.2-8.8-6.5-7.6-11.9l51.1-229.4c1.2-5.4,6.7-7.7,11.9-7.6l43.9-0.2c5.4,1.2,8.8,6.5,7.6,11.9
-			l-51.1,229.4C545.5,516.6,541,519,534.8,518.8z"/>
+		l-51.1,229.4C545.5,516.6,541,519,534.8,518.8z"/>
 	</g>
 
-	<g id="circulo">
-		<circle cx="443" cy="488" r="31"/>
-	</g>
 
 </svg>

@@ -8,20 +8,70 @@
     <title> Daniel V. </title>
     <link rel="stylesheet" href="style.css">
 </head>
+
+<style>
+    .container{
+		width: 15px;
+		height: 15px;
+        border-radius: 3px;
+		background-color: black;
+		animation: circulo 3s linear infinite;
+        margin-top: -36px;
+        margin-left: 160px;
+	}
+
+	@keyframes circulo {
+		from {
+			transform: rotateZ(0deg);
+		}
+		to {
+			transform: rotateZ(360deg);
+		}
+	}
+</style>
+
 <body>
 
     <div class="bg">    
+        
+        
         <div class="svg">
-        <object data="code.svg"> </object>
+            
+        <object data="code.svg"> 
+
+        </object>
+        
         </div>
+        <div class="container"></div>
     </div>
 
     <div class="texto">
         <ul>
+            <h4></h4>
             <li>Desenvolvedor Backend Jr.</li> 
                 <ul>
-                    <li>Linguagem: Python</li>
-                    <li>Frameworks: Django e Django Rest</li>
+                    <p></p>
+                    
+                    <ul>I'm working with API's  :)</ul>
+                    <p></p>
+                    <ul>My Skills</ul>
+                    
+                    
+                    <li>Python</li>
+                    <li>Django Rest Framework</li>
+                    <li>React Web</li>
+                    <li>JavaScript</li>
+                    <li>Git</li>
+                    <p></p>
+                    <ul>My setup</ul>
+                    <li>IDE: vscode</li>
+                    <li>Terminal: bash</li>
+                    <li>Envroinment: Docker</li>
+                    <p></p>
+                    <ul>Tools</ul>
+                    <li>Postman</li>
+                    <li>pgAdmin4</li>
+                    <li>Whimscal</li>
                 </ul>
             </li>
         </ul>
