@@ -6,7 +6,7 @@
 <style>
 	#barra{
 		animation: barra 3s ease-in-out infinite alternate;
-		fill: white;
+		fill: #F0F0F0;
 	}
 
 	@keyframes barra {
