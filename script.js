@@ -1,6 +1,7 @@
 const field = document.querySelector('.heart-field');
 const motionButton = document.querySelector('.motion-button');
-const totalHearts = 50;
+const heartEmojis = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🩷', '🩵', '🤍', '🤎', '💖', '💕', '💗', '💓', '💘', '💝'];
+const totalHearts = 60;
 const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 const hearts = [];
 const gravity = { x: 0, y: 0 };
@@ -41,8 +42,8 @@ function updateGravity(event) {
         vertical = gamma;
     }
 
-    gravity.x = clamp(horizontal / 35, -1, 1) * 0.52;
-    gravity.y = clamp(vertical / 35, -1, 1) * 0.52;
+    gravity.x = clamp(horizontal / 35, -1, 1) * 0.28;
+    gravity.y = clamp(vertical / 35, -1, 1) * 0.28;
 }
 
 function listenToOrientation() {
@@ -72,9 +73,9 @@ function requestMotionPermission() {
 
 function createHeart(index) {
     const element = document.createElement('span');
-    const size = 24;
+    const size = 34;
     element.className = 'heart';
-    element.textContent = '❤️';
+    element.textContent = heartEmojis[index % heartEmojis.length];
     field.appendChild(element);
 
     hearts.push({
@@ -83,8 +84,8 @@ function createHeart(index) {
         radius: size / 2,
         x: Math.random() * Math.max(1, bounds.width - size),
         y: Math.random() * Math.max(1, bounds.height - size),
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
+        vx: (Math.random() - 0.5) * 0.22,
+        vy: (Math.random() - 0.5) * 0.22,
         rotation: (index / totalHearts) * 360,
         rotationSpeed: (Math.random() - 0.5) * 0.7,
     });
@@ -138,11 +139,11 @@ function moveHearts(currentTime) {
 
         if (heart.x <= 0 || heart.x >= bounds.width - heart.size) {
             heart.x = clamp(heart.x, 0, bounds.width - heart.size);
-            heart.vx *= -0.78;
+            heart.vx *= -0.48;
         }
         if (heart.y <= 0 || heart.y >= bounds.height - heart.size) {
             heart.y = clamp(heart.y, 0, bounds.height - heart.size);
-            heart.vy *= -0.78;
+            heart.vy *= -0.48;
         }
     });
 

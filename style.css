@@ -28,9 +28,9 @@ body {
     position: absolute;
     display: grid;
     place-items: center;
-    width: 28px;
-    height: 28px;
-    font-size: 19px;
+    width: 34px;
+    height: 34px;
+    font-size: 27px;
     line-height: 1;
     user-select: none;
     will-change: transform;
@@ -39,15 +39,17 @@ body {
 
 .motion-button {
     position: fixed;
-    bottom: 24px;
+    bottom: max(24px, env(safe-area-inset-bottom));
     left: 50%;
     z-index: 2;
+    width: max-content;
     padding: 10px 16px;
     border: 1px solid #d8d0cb;
     border-radius: 999px;
     color: #5f5752;
     background: rgba(255, 255, 255, .9);
     font: 400 18px 'Ballet', cursive;
+    text-align: center;
     transform: translateX(-50%);
     cursor: pointer;
 }
@@ -55,5 +57,5 @@ body {
 .motion-button.is-hidden { display: none; }
 
 @media (max-width: 600px) {
-    .heart { width: 24px; height: 24px; font-size: 16px; }
+    .heart { width: 34px; height: 34px; font-size: 23px; }
 }
