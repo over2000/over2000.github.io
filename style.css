@@ -1,25 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
-
-.bg {
-    width: 400px;
-    height: 120px;
-
+:root {
+    color: #202124;
+    background: #fff;
+    font-family: 'Ballet', cursive;
+    font-synthesis: none;
 }
 
-.svg {
-    height: 140px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border: none;
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; }
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    background: #fff;
 }
 
-.texto {
-    font-family: 'Nunito', sans-serif;
-    text-align: left;
-    font-size: 18px;
-    margin-top: 50px;
-    margin-left: 0px;
-    color: #F0F0F0;
+.heart-field {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.heart {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    font-size: 19px;
+    line-height: 1;
+    user-select: none;
+    opacity: 1;
+    will-change: transform;
+    transition: opacity .45s ease;
+}
+
+.heart-field.is-fading .heart { opacity: 0; }
+
+.page-shell {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 20px;
+}
+
+.controls {
+    width: min(100%, 520px);
+    padding: 16px 0 22px;
+    text-align: center;
+}
+
+.controls label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: .02em;
+}
+
+.input-wrap { position: relative; }
+
+input {
+    width: 100%;
+    padding: 12px 56px 12px 14px;
+    border: 1px solid #d8d0cb;
+    border-radius: 6px;
+    outline: none;
+    color: #202124;
+    background: #fff;
+    font: 400 27px 'Ballet', cursive;
+    text-align: center;
+}
+
+input:focus { border-color: #c85364; box-shadow: 0 0 0 3px rgba(200, 83, 100, .14); }
+
+#character-count {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    color: #8c817b;
+    font-size: 12px;
+    transform: translateY(-50%);
+}
+
+.controls p { margin: 8px 0 0; color: #8c817b; font: 400 18px 'Ballet', cursive; }
+
+@media (max-width: 600px) {
+    .page-shell { padding: 22px 14px; }
+    .controls label { font-size: 27px; }
+    .heart { width: 24px; height: 24px; font-size: 16px; }
 }
