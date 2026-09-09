@@ -4,7 +4,7 @@ const emojiToggle = document.querySelector('.emoji-toggle');
 const emojiPicker = document.querySelector('.emoji-picker');
 const emojiOptions = [...document.querySelectorAll('.emoji-option')];
 const heartEmojis = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🩷', '🩵', '🤍', '🤎', '💖', '💕', '💗', '💓', '💘', '💝'];
-const totalHearts = 60;
+const totalHearts = 40;
 const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 const hearts = [];
 const selectedEmojis = new Set();
@@ -46,8 +46,8 @@ function updateGravity(event) {
         vertical = gamma;
     }
 
-    gravity.x = clamp(horizontal / 35, -1, 1) * 0.28;
-    gravity.y = clamp(vertical / 35, -1, 1) * 0.28;
+    gravity.x = clamp(horizontal / 35, -1, 1) * 0.2;
+    gravity.y = clamp(vertical / 35, -1, 1) * 0.2;
 }
 
 function listenToOrientation() {
@@ -77,7 +77,7 @@ function requestMotionPermission() {
 
 function createHeart(index) {
     const element = document.createElement('span');
-    const size = 34;
+    const size = 40;
     element.className = 'heart';
     element.textContent = heartEmojis[index % heartEmojis.length];
     field.appendChild(element);
@@ -88,8 +88,8 @@ function createHeart(index) {
         radius: size / 2,
         x: Math.random() * Math.max(1, bounds.width - size),
         y: Math.random() * Math.max(1, bounds.height - size),
-        vx: (Math.random() - 0.5) * 0.22,
-        vy: (Math.random() - 0.5) * 0.22,
+        vx: (Math.random() - 0.5) * 0.14,
+        vy: (Math.random() - 0.5) * 0.14,
         rotation: (index / totalHearts) * 360,
         rotationSpeed: (Math.random() - 0.5) * 0.7,
     });
@@ -126,7 +126,7 @@ function resolveHeartCollisions() {
             const relativeVelocity = (second.vx - first.vx) * normalX + (second.vy - first.vy) * normalY;
             if (relativeVelocity > 0) continue;
 
-            const impulse = -relativeVelocity * 0.82;
+            const impulse = -relativeVelocity * 0.52;
             first.vx -= impulse * normalX;
             first.vy -= impulse * normalY;
             second.vx += impulse * normalX;
@@ -142,25 +142,25 @@ function moveHearts(currentTime) {
     hearts.forEach((heart) => {
         heart.vx += gravity.x * delta;
         heart.vy += gravity.y * delta;
-        heart.vx *= Math.pow(0.965, delta);
-        heart.vy *= Math.pow(0.965, delta);
+        heart.vx *= Math.pow(0.94, delta);
+        heart.vy *= Math.pow(0.94, delta);
 
         heart.x += heart.vx * delta;
         heart.y += heart.vy * delta;
 
         if (heart.x <= 0 || heart.x >= bounds.width - heart.size) {
             heart.x = clamp(heart.x, 0, bounds.width - heart.size);
-            heart.vx *= -0.48;
+            heart.vx *= -0.32;
         }
         if (heart.y <= 0 || heart.y >= bounds.height - heart.size) {
             heart.y = clamp(heart.y, 0, bounds.height - heart.size);
-            heart.vy *= -0.48;
+            heart.vy *= -0.32;
         }
     });
 
     resolveHeartCollisions();
     hearts.forEach((heart) => {
-        heart.rotation += (Math.hypot(heart.vx, heart.vy) * 2 + heart.rotationSpeed) * delta;
+        heart.rotation += (Math.hypot(heart.vx, heart.vy) * 1.2 + heart.rotationSpeed * 0.45) * delta;
         heart.element.style.transform = `translate3d(${heart.x}px, ${heart.y}px, 0) rotate(${heart.rotation}deg)`;
     });
 

@@ -28,9 +28,9 @@ body {
     position: absolute;
     display: grid;
     place-items: center;
-    width: 34px;
-    height: 34px;
-    font-size: 27px;
+    width: 40px;
+    height: 40px;
+    font-size: 31px;
     line-height: 1;
     user-select: none;
     will-change: transform;
@@ -115,5 +115,5 @@ body {
 }
 
 @media (max-width: 600px) {
-    .heart { width: 34px; height: 34px; font-size: 23px; }
+    .heart { width: 40px; height: 40px; font-size: 28px; }
 }
