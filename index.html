@@ -9,12 +9,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=4">
-    <script src="script.js?v=4" defer></script>
+    <link rel="stylesheet" href="style.css?v=5">
+    <script src="script.js?v=5" defer></script>
 </head>
 
 <body>
     <div class="heart-field" aria-hidden="true"></div>
+    <div class="emoji-controls">
+        <button class="emoji-toggle" type="button" aria-expanded="false" aria-controls="emoji-picker">Escolher emojis</button>
+        <fieldset class="emoji-picker" id="emoji-picker" aria-label="Escolha os emojis flutuantes" hidden>
+            <button class="emoji-option" type="button" aria-pressed="false">💞</button>
+            <button class="emoji-option" type="button" aria-pressed="false">❣️</button>
+            <button class="emoji-option" type="button" aria-pressed="false">🌸</button>
+            <button class="emoji-option" type="button" aria-pressed="false">💐</button>
+            <button class="emoji-option" type="button" aria-pressed="false">✨</button>
+            <button class="emoji-option" type="button" aria-pressed="false">🪩</button>
+        </fieldset>
+    </div>
     <button class="motion-button" type="button">Ativar movimento</button>
 
 </body>

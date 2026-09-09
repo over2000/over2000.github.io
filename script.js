@@ -1,9 +1,13 @@
 const field = document.querySelector('.heart-field');
 const motionButton = document.querySelector('.motion-button');
+const emojiToggle = document.querySelector('.emoji-toggle');
+const emojiPicker = document.querySelector('.emoji-picker');
+const emojiOptions = [...document.querySelectorAll('.emoji-option')];
 const heartEmojis = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🩷', '🩵', '🤍', '🤎', '💖', '💕', '💗', '💓', '💘', '💝'];
 const totalHearts = 60;
 const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 const hearts = [];
+const selectedEmojis = new Set();
 const gravity = { x: 0, y: 0 };
 const bounds = { width: window.innerWidth, height: window.innerHeight };
 let orientationReady = false;
@@ -91,6 +95,13 @@ function createHeart(index) {
     });
 }
 
+function updateHeartEmojis() {
+    const emojis = selectedEmojis.size ? [...selectedEmojis] : heartEmojis;
+    hearts.forEach((heart, index) => {
+        heart.element.textContent = emojis[index % emojis.length];
+    });
+}
+
 function resolveHeartCollisions() {
     for (let firstIndex = 0; firstIndex < hearts.length; firstIndex += 1) {
         for (let secondIndex = firstIndex + 1; secondIndex < hearts.length; secondIndex += 1) {
@@ -157,6 +168,26 @@ function moveHearts(currentTime) {
 }
 
 for (let index = 0; index < totalHearts; index += 1) createHeart(index);
+
+emojiToggle.addEventListener('click', () => {
+    const isOpen = emojiToggle.getAttribute('aria-expanded') === 'true';
+    emojiToggle.setAttribute('aria-expanded', String(!isOpen));
+    emojiPicker.hidden = isOpen;
+});
+
+emojiOptions.forEach((option) => {
+    option.addEventListener('click', () => {
+        const emoji = option.textContent;
+        if (selectedEmojis.has(emoji)) {
+            selectedEmojis.delete(emoji);
+            option.setAttribute('aria-pressed', 'false');
+        } else {
+            selectedEmojis.add(emoji);
+            option.setAttribute('aria-pressed', 'true');
+        }
+        updateHeartEmojis();
+    });
+});
 
 window.addEventListener('resize', updateBounds, { passive: true });
 window.addEventListener('orientationchange', () => {
