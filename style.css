@@ -14,7 +14,6 @@ body {
     overflow: hidden;
     background: #fff;
     overscroll-behavior: none;
-    touch-action: none;
 }
 
 .heart-field {
@@ -37,6 +36,23 @@ body {
     will-change: transform;
     pointer-events: none;
 }
+
+.motion-button {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    z-index: 2;
+    padding: 10px 16px;
+    border: 1px solid #d8d0cb;
+    border-radius: 999px;
+    color: #5f5752;
+    background: rgba(255, 255, 255, .9);
+    font: 400 18px 'Ballet', cursive;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+.motion-button.is-hidden { display: none; }
 
 @media (max-width: 600px) {
     .heart { width: 24px; height: 24px; font-size: 16px; }

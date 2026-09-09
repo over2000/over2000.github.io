@@ -1,4 +1,5 @@
 const field = document.querySelector('.heart-field');
+const motionButton = document.querySelector('.motion-button');
 const totalHearts = 50;
 const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 const hearts = [];
@@ -47,12 +48,16 @@ function updateGravity(event) {
 function listenToOrientation() {
     if (orientationReady) return;
     orientationReady = true;
+    motionButton.classList.add('is-hidden');
     window.addEventListener('deviceorientation', updateGravity, true);
     window.addEventListener('deviceorientationabsolute', updateGravity, true);
 }
 
 function requestMotionPermission() {
-    if (typeof DeviceOrientationEvent === 'undefined') return;
+    if (typeof DeviceOrientationEvent === 'undefined') {
+        motionButton.classList.add('is-hidden');
+        return;
+    }
     if (typeof DeviceOrientationEvent.requestPermission !== 'function') {
         listenToOrientation();
         return;
@@ -161,10 +166,12 @@ window.addEventListener('orientationchange', () => {
 }, { passive: true });
 
 if (isTouchDevice) {
-    document.addEventListener('pointerdown', requestMotionPermission, { once: true });
+    motionButton.addEventListener('click', requestMotionPermission, { once: true });
     if (typeof DeviceOrientationEvent === 'undefined' || typeof DeviceOrientationEvent.requestPermission !== 'function') {
         listenToOrientation();
     }
+} else {
+    motionButton.classList.add('is-hidden');
 }
 
 requestAnimationFrame(moveHearts);
